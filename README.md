@@ -1,6 +1,6 @@
 # V0Finder 
 V0Finder is an approach for detecting correct origin information of public software vulnerabilities.
-Principles and experimental results are discussed in [our paper](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/paper/V0Finder_Security21.pdf), which will be published in 30th USENIX Security Symposium (Security 2021).
+Principles and experimental results are discussed in [our paper](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/paper/V0Finder_Security21.pdf), which will be published in 30th USENIX Security Symposium (Security 2021).
 
 ※ Exception handling parts may be insufficient due to many modifications in the code refactoring process; we will improve them.
 
@@ -35,8 +35,8 @@ Our utilized versions: Python 3.9.1, python3-tlsh 4.5.0, and universal-ctags p5.
 
 #### 1. CVE Pool construction (src/1_poolConstruction/CVEPool)
  - Download NVD JSON Feeds (downloaded [here](https://nvd.nist.gov/vuln/data-feeds)) and store all the json file at "src/1_poolConstruction/CVEPool/NVDjsonfeed/" (the stored JSON feeds are samples collected in March 2021).
- - Specify the directory paths in [CVEPatch_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/1_poolConstruction/CVEPool/CVEPatch_Collector.py) (line 15 to 34), where CVE diffs and corresponding vulnerable functions will be stored. 
- - Execute [CVEPatch_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/1_poolConstruction/CVEPool/CVEPatch_Collector.py) (several warnings may occur due to encoding issues).
+ - Specify the directory paths in [CVEPatch_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/1_poolConstruction/CVEPool/CVEPatch_Collector.py) (line 15 to 34), where CVE diffs and corresponding vulnerable functions will be stored. 
+ - Execute [CVEPatch_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/1_poolConstruction/CVEPool/CVEPatch_Collector.py) (several warnings may occur due to encoding issues).
  ```
  python3 OCVEPatch_Collector.py
  ```
@@ -47,9 +47,9 @@ Our utilized versions: Python 3.9.1, python3-tlsh 4.5.0, and universal-ctags p5.
    * ***./NVD_vulhashes***: The output file where the hash values of the vulnerable functions are stored.
 
 #### 2. Software Pool construction (src/1_poolConstruction/SoftwarePool)
- - Collect git clone URLs into a single file, as shown in the [sample file](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/1_poolConstruction/SoftwarePool/sample).
- - Specify the directory paths in [OSS_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/1_poolConstruction/SoftwarePool/OSS_Collector.py) (line 17 to 24), where cloned repositories and their functions will be stored. Also you should specify the path of the installed ctags here.
- - Execute [OSS_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/1_poolConstruction/SoftwarePool/OSS_Collector.py) (several warnings may occur due to encoding issues).
+ - Collect git clone URLs into a single file, as shown in the [sample file](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/1_poolConstruction/SoftwarePool/sample).
+ - Specify the directory paths in [OSS_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/1_poolConstruction/SoftwarePool/OSS_Collector.py) (line 17 to 24), where cloned repositories and their functions will be stored. Also you should specify the path of the installed ctags here.
+ - Execute [OSS_Collector.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/1_poolConstruction/SoftwarePool/OSS_Collector.py) (several warnings may occur due to encoding issues).
  ```
  python3 OSS_Collector.py
  ```
@@ -63,8 +63,8 @@ Our utilized versions: Python 3.9.1, python3-tlsh 4.5.0, and universal-ctags p5.
 ### Graph Construction (src/2_graphConstruction/)
 
 #### 1. Detecting vulnerable clones (src/2_graphConstruction/Step1_DetectingVulClones.py)
- - Specify the directory paths in [Step1_DetectingVulClones.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/2_graphConstruction/Step1_DetectingVulClones.py) (line 15 to 20); these should be matched the output path of CVEPool and SoftwarePool.
- - Execute [Step1_DetectingVulClones.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/2_graphConstruction/Step1_DetectingVulClones.py) (several warnings may occur due to encoding issues).
+ - Specify the directory paths in [Step1_DetectingVulClones.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/2_graphConstruction/Step1_DetectingVulClones.py) (line 15 to 20); these should be matched the output path of CVEPool and SoftwarePool.
+ - Execute [Step1_DetectingVulClones.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/2_graphConstruction/Step1_DetectingVulClones.py) (several warnings may occur due to encoding issues).
  ```
  python3 Step1_DetectingVulClones.py
  ```
@@ -79,8 +79,8 @@ Our utilized versions: Python 3.9.1, python3-tlsh 4.5.0, and universal-ctags p5.
      * Version information
       
 #### 2. Detecting V0 for each vulnerability (src/2_graphConstruction/Step2_DetectingV0.py)
- - Specify the directory paths in [Step2_DetectingV0.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/2_graphConstruction/Step2_DetectingV0.py) (line 15 to 21); these should be matched the output path of CVEPool and SoftwarePool.
- - Execute [Step2_DetectingV0.py](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/src/2_graphConstruction/Step2_DetectingV0.py).
+ - Specify the directory paths in [Step2_DetectingV0.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/2_graphConstruction/Step2_DetectingV0.py) (line 15 to 21); these should be matched the output path of CVEPool and SoftwarePool.
+ - Execute [Step2_DetectingV0.py](https://github.com/WOOSEUNGHOON/V0Finder-public/blob/main/src/2_graphConstruction/Step2_DetectingV0.py).
  ```
  python3 Step2_DetectingV0.py
  ```
