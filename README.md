@@ -1,6 +1,6 @@
 # V0Finder 
 V0Finder is an approach for detecting correct origin information of public software vulnerabilities.
-Principles and experimental results are discussed in our paper, which will be published in 30th USENIX Security Symposium (Security 2021).
+Principles and experimental results are discussed in [our paper](https://github.com/WOOSEUNGHOON/V0Finder-dev/blob/main/paper/V0Finder_Security21.pdf), which will be published in 30th USENIX Security Symposium (Security 2021).
 
 ※ Exception handling parts may be insufficient due to many modifications in the code refactoring process; we will improve them.
 
